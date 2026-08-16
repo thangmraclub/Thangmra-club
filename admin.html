@@ -1,25 +1,455 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin | Thangmra Club</title><style>
-body{font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f4f7f6;margin:0;color:#20303a}header{background:#062b4c;color:white;padding:20px;text-align:center}main{max-width:800px;margin:auto;padding:20px}.card{background:white;padding:20px;border-radius:16px;margin:15px 0;box-shadow:0 5px 20px #0001}label{display:block;font-weight:bold;margin:10px 0 5px}input,textarea{width:100%;padding:11px;border:1px solid #ccd6da;border-radius:8px;box-sizing:border-box}textarea{min-height:100px}button{border:0;border-radius:8px;padding:11px 16px;background:#07865b;color:white;font-weight:bold;margin:5px 3px}.danger{background:#b52b2b}#loginBox{display:block}#panel{display:none}
-</style></head><body><header><h1>⚙️ Thangmra Club Admin</h1><p>অনলাইন ওয়েবসাইটের তথ্য পরিবর্তন</p></header><main>
-<div class="card" id="loginBox"><h2>Admin Login</h2><label>Email</label><input id="email" type="email"><label>Password</label><input id="password" type="password"><button id="login">Login</button><p id="loginMsg"></p></div>
-<div id="panel"><div class="card"><h2>হোম পেজ</h2><label>শিরোনাম</label><input id="title"><label>পরিচিতি</label><textarea id="intro"></textarea><button id="save">অনলাইনে সংরক্ষণ</button><button class="danger" id="logout">Logout</button><p id="msg"></p></div></div>
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Thangmra Club Admin</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>Thangmra Club Admin</h1>
+
+</div>
+
+</header>
+
+
+
+<main class="admin">
+
+
+<div id="loginBox">
+
+<h2>Admin Login</h2>
+
+
+<input
+id="email"
+type="email"
+placeholder="Admin Email"
+>
+
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+>
+
+
+<button id="loginBtn">
+Login
+</button>
+
+
+<p id="loginMessage"></p>
+
+</div>
+
+
+
+<div id="adminPanel" style="display:none;">
+
+
+<button id="logoutBtn">
+Logout
+</button>
+
+
+<hr>
+
+
+<h2>নতুন সদস্য যোগ করুন</h2>
+
+
+<input
+id="memberName"
+placeholder="সদস্যের নাম"
+>
+
+
+<input
+id="memberPosition"
+placeholder="পদবি"
+>
+
+
+<input
+id="memberPhone"
+placeholder="মোবাইল নম্বর"
+>
+
+
+<button id="addMember">
+সদস্য যোগ করুন
+</button>
+
+
+
+<h2>সদস্যদের তালিকা</h2>
+
+<div id="adminMembers"></div>
+
+
+
+<hr>
+
+
+<h2>নতুন নোটিশ</h2>
+
+
+<input
+id="noticeTitle"
+placeholder="নোটিশের শিরোনাম"
+>
+
+
+<textarea
+id="noticeText"
+placeholder="নোটিশ লিখুন"
+></textarea>
+
+
+<button id="addNotice">
+নোটিশ প্রকাশ করুন
+</button>
+
+
+
+<h2>নোটিশ তালিকা</h2>
+
+<div id="adminNotices"></div>
+
+
+</div>
+
+
 </main>
+
+
+
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import {getDatabase,ref,get,set} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "YOUR_PROJECT.firebasestorage.app",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+
+import {
+auth,
+db,
+signInWithEmailAndPassword,
+signOut,
+ref,
+push,
+set,
+remove,
+onValue
+} from "./firebase.js";
+
+
+
+const loginBox =
+document.getElementById("loginBox");
+
+const adminPanel =
+document.getElementById("adminPanel");
+
+
+
+/* LOGIN */
+
+document.getElementById("loginBtn")
+.onclick = async () => {
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+
+try {
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+loginBox.style.display = "none";
+
+adminPanel.style.display = "block";
+
+}
+
+catch(error) {
+
+document.getElementById(
+"loginMessage"
+).innerText =
+"Email অথবা Password ভুল।";
+
+}
+
 };
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getDatabase(app);
-login.onclick=async()=>{try{await signInWithEmailAndPassword(auth,email.value,password.value);loginMsg.textContent="লগইন হয়েছে";}catch(e){loginMsg.textContent="Login failed: "+e.message;}};
-onAuthStateChanged(auth,async user=>{loginBox.style.display=user?"none":"block";panel.style.display=user?"block":"none";if(user){const s=await get(ref(db,"site"));const d=s.val()||{};title.value=d.title||"Thangmra Club";intro.value=d.intro||"ঐক্য • সেবা • উন্নয়ন";}});
-save.onclick=async()=>{await set(ref(db,"site"),{title:title.value,intro:intro.value});msg.textContent="✅ অনলাইনে সংরক্ষণ হয়েছে।";};
-logout.onclick=()=>signOut(auth);
-</script></body></html>
+
+
+
+/* LOGOUT */
+
+document.getElementById("logoutBtn")
+.onclick = () => {
+
+signOut(auth);
+
+location.reload();
+
+};
+
+
+
+/* ADD MEMBER */
+
+document.getElementById("addMember")
+.onclick = async () => {
+
+const name =
+document.getElementById("memberName").value;
+
+const position =
+document.getElementById("memberPosition").value;
+
+const phone =
+document.getElementById("memberPhone").value;
+
+
+if (!name) {
+
+alert("সদস্যের নাম দিন");
+
+return;
+
+}
+
+
+const newMember =
+push(ref(db, "members"));
+
+
+await set(newMember, {
+
+name: name,
+
+position: position,
+
+phone: phone
+
+});
+
+
+alert("সদস্য যোগ হয়েছে");
+
+document.getElementById(
+"memberName"
+).value = "";
+
+document.getElementById(
+"memberPosition"
+).value = "";
+
+document.getElementById(
+"memberPhone"
+).value = "";
+
+};
+
+
+
+/* SHOW MEMBERS */
+
+onValue(ref(db, "members"), snapshot => {
+
+const box =
+document.getElementById("adminMembers");
+
+box.innerHTML = "";
+
+const data = snapshot.val();
+
+if (!data) return;
+
+
+Object.entries(data).forEach(
+([id, member]) => {
+
+box.innerHTML += `
+
+<div class="adminItem">
+
+<b>${member.name}</b>
+
+<br>
+
+${member.position || ""}
+
+<br>
+
+${member.phone || ""}
+
+<br>
+
+<button
+onclick="deleteMember('${id}')">
+Delete
+</button>
+
+</div>
+
+`;
+
+});
+
+});
+
+
+
+/* DELETE MEMBER */
+
+window.deleteMember = async (id) => {
+
+if (confirm("সদস্য মুছে ফেলবেন?")) {
+
+await remove(
+ref(db, "members/" + id)
+);
+
+}
+
+};
+
+
+
+/* ADD NOTICE */
+
+document.getElementById("addNotice")
+.onclick = async () => {
+
+const title =
+document.getElementById("noticeTitle").value;
+
+const text =
+document.getElementById("noticeText").value;
+
+
+if (!title || !text) {
+
+alert("নোটিশ সম্পূর্ণ লিখুন");
+
+return;
+
+}
+
+
+const newNotice =
+push(ref(db, "notices"));
+
+
+await set(newNotice, {
+
+title: title,
+
+text: text,
+
+date: new Date().toLocaleDateString("bn-BD")
+
+});
+
+
+alert("নোটিশ প্রকাশ হয়েছে");
+
+
+document.getElementById(
+"noticeTitle"
+).value = "";
+
+document.getElementById(
+"noticeText"
+).value = "";
+
+};
+
+
+
+/* SHOW NOTICES */
+
+onValue(ref(db, "notices"), snapshot => {
+
+const box =
+document.getElementById("adminNotices");
+
+box.innerHTML = "";
+
+const data = snapshot.val();
+
+if (!data) return;
+
+
+Object.entries(data).forEach(
+([id, notice]) => {
+
+box.innerHTML += `
+
+<div class="adminItem">
+
+<b>${notice.title}</b>
+
+<p>${notice.text}</p>
+
+<button
+onclick="deleteNotice('${id}')">
+Delete
+</button>
+
+</div>
+
+`;
+
+});
+
+});
+
+
+
+/* DELETE NOTICE */
+
+window.deleteNotice = async (id) => {
+
+if (confirm("নোটিশ মুছে ফেলবেন?")) {
+
+await remove(
+ref(db, "notices/" + id)
+);
+
+}
+
+};
+
+</script>
+
+
+</body>
+
+</html>
