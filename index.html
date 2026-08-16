@@ -1,32 +1,238 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thangmra Club</title><style>
-body{font-family:Arial,"Noto Sans Bengali",sans-serif;margin:0;background:#f5f8f6;color:#20303a}
-header{background:linear-gradient(135deg,#062b4c,#07865b);color:white;text-align:center;padding:22px}
-.brand{display:flex;justify-content:center;align-items:center;gap:10px;font-size:32px;font-weight:bold}
-.brand-logo{width:65px;height:65px;border-radius:50%;background:white;object-fit:contain;padding:3px}
-nav{background:#041c32;display:flex;justify-content:center;gap:6px;overflow:auto;padding:8px}
-nav a{color:white;text-decoration:none;padding:9px 12px;white-space:nowrap}
-main{max-width:1000px;margin:auto;padding:25px}
-.card{background:white;padding:22px;border-radius:16px;margin:15px 0;box-shadow:0 5px 20px #0001}
-button{background:#07865b;color:white;border:0;padding:10px 15px;border-radius:8px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.brand{font-size:27px}}
-</style></head>
-<body><header><div class="brand"><div class="brand-logo">🌿</div><div>Thangmra Club</div></div><p>ঐক্য • সেবা • উন্নয়ন</p></header>
-<nav><a href="index.html">হোম</a><a href="about.html">আমাদের সম্পর্কে</a><a href="activities.html">কার্যক্রম</a><a href="members.html">সদস্য</a><a href="notice.html">নোটিশ</a><a href="gallery.html">গ্যালারি</a><a href="contact.html">যোগাযোগ</a><a href="admin.html">⚙️ Admin</a></nav>
-<main><div class="card"><h1 id="title">Thangmra Club</h1><p id="intro">লোড হচ্ছে...</p></div>
-<div class="grid"><div class="card"><h3>🤝 সামাজিক সেবা</h3><p>সামাজিক সচেতনতা ও সহযোগিতামূলক কার্যক্রম।</p></div><div class="card"><h3>⚽ ক্রীড়া</h3><p>তরুণদের খেলাধুলায় উৎসাহ দেওয়া।</p></div><div class="card"><h3>🌱 উন্নয়ন</h3><p>স্থানীয় উন্নয়নে তরুণদের সম্পৃক্ত করা।</p></div></div></main>
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Thangmra Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="brand">
+
+<img src="logo.png" alt="Thangmra Club Logo">
+
+<h1>Thangmra Club</h1>
+
+</div>
+
+
+<nav>
+
+<a href="#home">হোম</a>
+
+<a href="#members">সদস্য</a>
+
+<a href="#notice">নোটিশ</a>
+
+<a href="#gallery">গ্যালারি</a>
+
+<a href="#contact">যোগাযোগ</a>
+
+<a href="admin.html">Admin</a>
+
+</nav>
+
+</header>
+
+
+
+<section id="home" class="hero">
+
+<h2>Thangmra Club</h2>
+
+<p>
+ঐক্য • সেবা • উন্নয়ন
+</p>
+
+<p>
+Together for a Better Tomorrow
+</p>
+
+</section>
+
+
+
+<section id="members">
+
+<h2>আমাদের সদস্য</h2>
+
+<div id="memberList" class="cards">
+
+লোড হচ্ছে...
+
+</div>
+
+</section>
+
+
+
+<section id="notice">
+
+<h2>নোটিশ</h2>
+
+<div id="noticeList">
+
+লোড হচ্ছে...
+
+</div>
+
+</section>
+
+
+
+<section id="gallery">
+
+<h2>গ্যালারি</h2>
+
+<div class="gallery">
+
+<img src="logo.png">
+
+</div>
+
+</section>
+
+
+
+<section id="contact">
+
+<h2>যোগাযোগ</h2>
+
+<p>
+📧 Email: thangmraclub1@gmail.com
+</p>
+
+<p>
+📱 মোবাইল: আপনার মোবাইল নম্বর
+</p>
+
+<p>
+📍 ঠিকানা: আপনার ঠিকানা
+</p>
+
+</section>
+
+
+
+<footer>
+
+<p>
+© 2026 Thangmra Club
+</p>
+
+</footer>
+
+
+
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {getDatabase,ref,onValue} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "YOUR_PROJECT.firebasestorage.app",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-const app=initializeApp(firebaseConfig), db=getDatabase(app);
-onValue(ref(db,"site"),s=>{const d=s.val()||{};title.textContent=d.title||"Thangmra Club";intro.textContent=d.intro||"ঐক্য • সেবা • উন্নয়ন";});
-</script></body></html>
+
+import {
+  db,
+  ref,
+  onValue
+} from "./firebase.js";
+
+
+// MEMBERS
+
+const memberList =
+document.getElementById("memberList");
+
+
+onValue(ref(db, "members"), (snapshot) => {
+
+memberList.innerHTML = "";
+
+const data = snapshot.val();
+
+if (!data) {
+
+memberList.innerHTML =
+"<p>এখনো কোনো সদস্য যোগ করা হয়নি।</p>";
+
+return;
+
+}
+
+
+Object.entries(data).forEach(([id, member]) => {
+
+memberList.innerHTML += `
+
+<div class="card">
+
+<h3>${member.name}</h3>
+
+<p>${member.position || ""}</p>
+
+<p>${member.phone || ""}</p>
+
+</div>
+
+`;
+
+});
+
+});
+
+
+
+// NOTICE
+
+const noticeList =
+document.getElementById("noticeList");
+
+
+onValue(ref(db, "notices"), (snapshot) => {
+
+noticeList.innerHTML = "";
+
+const data = snapshot.val();
+
+if (!data) {
+
+noticeList.innerHTML =
+"<p>কোনো নোটিশ নেই।</p>";
+
+return;
+
+}
+
+
+Object.values(data).reverse().forEach(notice => {
+
+noticeList.innerHTML += `
+
+<div class="notice">
+
+<h3>${notice.title}</h3>
+
+<p>${notice.text}</p>
+
+</div>
+
+`;
+
+});
+
+});
+
+</script>
+
+
+</body>
+
+</html>
