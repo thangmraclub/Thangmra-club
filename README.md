@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Thangmra Club</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8f6;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #087f5b, #064e3b);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    header .logo {
+      font-size: 55px;
+    }
+
+    header h1 {
+      font-size: 38px;
+      margin: 8px 0;
+    }
+
+    header p {
+      font-size: 17px;
+    }
+
+    nav {
+      background: #033c2d;
+      padding: 14px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #ffd43b;
+    }
+
+    .hero {
+      text-align: center;
+      background: white;
+      padding: 50px 20px;
+    }
+
+    .hero h2 {
+      color: #087f5b;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      margin: 20px 0;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      color: #087f5b;
+      margin-bottom: 10px;
+    }
+
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .activity {
+      background: #e8f5ef;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .activity h3 {
+      color: #075c45;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    footer {
+      background: #033c2d;
+      color: white;
+      text-align: center;
+      padding: 22px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 30px;
+      }
+
+      nav a {
+        margin: 0 5px;
+        font-size: 13px;
+      }
+
+      .activities {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">🌿</div>
+    <h1>Thangmra Club</h1>
+    <p>ঐক্য • সহযোগিতা • উন্নয়ন</p>
+  </header>
+
+  <nav>
+    <a href="#home">হোম</a>
+    <a href="#about">আমাদের সম্পর্কে</a>
+    <a href="#activities">কার্যক্রম</a>
+    <a href="#notice">নোটিশ</a>
+    <a href="#contact">যোগাযোগ</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h2>Thangmra Club-এ স্বাগতম</h2>
+    <p>
+      একটি সুন্দর, ঐক্যবদ্ধ ও উন্নত সমাজ গঠনে
+      আমরা একসাথে কাজ করি।
+    </p>
+  </section>
+
+  <div class="container">
+
+    <section class="card" id="about">
+      <h2>👥 আমাদের সম্পর্কে</h2>
+      <p>
+        Thangmra Club একটি সামাজিক ও যুব সংগঠন।
+        সামাজিক, সাংস্কৃতিক, ক্রীড়া ও উন্নয়নমূলক
+        বিভিন্ন কার্যক্রমের মাধ্যমে তরুণদের সম্পৃক্ত
+        করাই আমাদের অন্যতম লক্ষ্য।
+      </p>
+    </section>
+
+    <section class="card" id="activities">
+      <h2>🌱 আমাদের কার্যক্রম</h2>
+
+      <div class="activities">
+
+        <div class="activity">
+          <h3>🤝 সামাজিক কাজ</h3>
+          <p>সামাজিক উন্নয়ন ও সহযোগিতামূলক কার্যক্রম।</p>
+        </div>
+
+        <div class="activity">
+          <h3>⚽ ক্রীড়া</h3>
+          <p>তরুণদের খেলাধুলায় উৎসাহিত করা।</p>
+        </div>
+
+        <div class="activity">
+          <h3>🎭 সাংস্কৃতিক</h3>
+          <p>সাংস্কৃতিক কার্যক্রম ও প্রতিভা বিকাশ।</p>
+        </div>
+
+        <div class="activity">
+          <h3>🌳 পরিবেশ</h3>
+          <p>পরিবেশ সংরক্ষণে সচেতনতা তৈরি করা।</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card" id="notice">
+      <h2>📢 নোটিশ</h2>
+      <p>
+        ক্লাবের নতুন নোটিশ ও কার্যক্রমের তথ্য
+        এখানে প্রকাশ করা হবে।
+      </p>
+    </section>
+
+    <section class="card contact" id="contact">
+      <h2>📞 যোগাযোগ</h2>
+      <p><strong>Thangmra Club</strong></p>
+      <p>📍 ঠিকানা: এখানে ঠিকানা লিখুন</p>
+      <p>📱 মোবাইল: 01XXXXXXXXX</p>
+      <p>📧 Email: example@email.com</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Thangmra Club</p>
+    <p>All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
