@@ -1,11 +1,15 @@
-THANGMRA CLUB ADMIN PANEL
+THANGMRA CLUB REAL ONLINE ADMIN
 
-ব্যবহার:
-1. admin.html ফাইলটি GitHub-এ আপলোড করুন।
-2. ওয়েবসাইটে /admin.html খুলুন।
-3. সদস্য, নোটিশ, হোমের লেখা ও যোগাযোগের তথ্য পরিবর্তন করুন।
-4. "সংরক্ষণ করুন" চাপুন।
+এটি সত্যিকারের অনলাইন Admin System-এর template।
+Admin থেকে তথ্য বদলালে Firebase Realtime Database-এর মাধ্যমে ওয়েবসাইটে সবার জন্য পরিবর্তন দেখা যাবে।
 
-নোট:
-এটি একটি সহজ browser-based admin panel। পরিবর্তন localStorage-এ থাকে এবং একই ব্রাউজারে দেখা যায়।
-GitHub Pages-এর static website-এ সবার জন্য স্থায়ীভাবে ডেটা পরিবর্তন করতে backend/database দরকার।
+যা করতে হবে:
+1. Firebase Console-এ একটি project তৈরি করুন।
+2. Realtime Database চালু করুন।
+3. Authentication > Email/Password চালু করুন।
+4. একজন Admin user তৈরি করুন।
+5. Firebase-এর Web App config কপি করে index.html ও admin.html-এর firebaseConfig অংশে বসান।
+6. Database Rules নিরাপদ রাখুন—শুধু authenticated admin-কে write permission দিন।
+7. সব HTML ফাইল GitHub-এ আপলোড করুন।
+
+এই template-এ login ছাড়া কেউ Admin Panel-এর data পরিবর্তন করতে পারবে না।
