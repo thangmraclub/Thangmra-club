@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সদস্য | Thangmra Club</title>
+<style>
+:root{--navy:#062b4c;--navy2:#041c32;--green:#07865b;--gold:#e0ad36;--bg:#f5f8f6;--text:#20303a;--muted:#68757d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans Bengali","Hind Siliguri",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}
+header{background:linear-gradient(135deg,var(--navy),#0b496e 55%,#056344);color:white;text-align:center;padding:28px 18px 38px}
+.logo{width:125px;height:125px;margin:auto;background:#fff;border-radius:50%;padding:5px;overflow:hidden;box-shadow:0 8px 25px #0004}
+.logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+header h1{font-size:clamp(30px,7vw,44px);margin-top:10px}
+header p{color:#f5d47a}
+nav{background:var(--navy2);position:sticky;top:0;z-index:10}
+.nav{display:flex;justify-content:center;gap:5px;overflow-x:auto;padding:8px}
+.nav a{color:#fff;padding:9px 12px;white-space:nowrap;border-radius:9px;font-size:14px}
+.nav a:hover{background:#ffffff18;color:#f5d47a}
+.container{max-width:1000px;margin:auto;padding:25px 18px}
+.card{background:#fff;border-radius:18px;padding:25px;margin:20px 0;box-shadow:0 8px 25px #062b4c14}
+h2{color:var(--navy);margin-bottom:10px}
+h3{color:var(--green);margin-bottom:5px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.item{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 20px #062b4c12}
+.icon{font-size:32px;margin-bottom:8px}
+.member{text-align:center}
+.avatar{width:75px;height:75px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;background:linear-gradient(135deg,var(--navy),var(--green));color:#fff;font-weight:bold;font-size:24px}
+.role{color:var(--green);font-size:14px}
+.notice{border-left:5px solid var(--gold)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.photo{height:190px;border-radius:16px;display:flex;align-items:flex-end;padding:15px;color:#fff;font-weight:bold;background:linear-gradient(135deg,#0b496e,#07865b,#d8ae3d)}
+.photo:nth-child(2){background:linear-gradient(135deg,#07865b,#d8ae3d,#062b4c)}
+.photo:nth-child(3){background:linear-gradient(135deg,#d8ae3d,#0b496e,#07865b)}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:10px 16px;border-radius:10px;margin-top:12px}
+footer{margin-top:35px;background:var(--navy2);color:#fff;text-align:center;padding:25px}
+footer span{color:#f5d47a}
+@media(max-width:700px){.grid,.gallery{grid-template-columns:1fr}.nav{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo"><img src="logo.png" alt="Thangmra Club Logo"></div>
+<h1>Thangmra Club</h1>
+<p>ঐক্য • সেবা • উন্নয়ন</p>
+</header>
+
+<nav><div class="nav">
+<a href="index.html">হোম</a>
+<a href="about.html" target="_blank">আমাদের সম্পর্কে</a>
+<a href="activities.html" target="_blank">কার্যক্রম</a>
+<a href="members.html" target="_blank">সদস্য</a>
+<a href="notice.html" target="_blank">নোটিশ</a>
+<a href="gallery.html" target="_blank">গ্যালারি</a>
+<a href="contact.html" target="_blank">যোগাযোগ</a>
+</div></nav>
+
+<main class="container">
+<h2>ক্লাবের সদস্যবৃন্দ</h2><p>এখানে প্রকৃত সদস্যদের নাম ও ছবি বসাতে পারবেন।</p>
+<div class="grid">
+<div class="item member"><div class="avatar">সভা</div><h3>সভাপতি</h3><div class="role">President</div></div>
+<div class="item member"><div class="avatar">সা</div><h3>সাধারণ সম্পাদক</h3><div class="role">General Secretary</div></div>
+<div class="item member"><div class="avatar">কো</div><h3>কোষাধ্যক্ষ</h3><div class="role">Treasurer</div></div>
+<div class="item member"><div class="avatar">সদ</div><h3>সদস্য</h3><div class="role">Member</div></div>
+</div>
+</main>
+<footer><b>🌿 <span>Thangmra Club</span></b><br>ঐক্য • সেবা • উন্নয়ন<br><small>© 2026 Thangmra Club</small></footer>
+</body>
+</html>
