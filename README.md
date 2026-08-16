@@ -213,7 +213,7 @@
       <p><strong>Thangmra Club</strong></p>
       <p>📍 ঠিকানা: এখানে ঠিকানা লিখুন</p>
       <p>📱 মোবাইল: 01XXXXXXXXX</p>
-      <p>📧 Email: example@email.com</p>
+      <p>📧 Email:thangmraclub1@gmail.com</p>
     </section>
 
   </div>
