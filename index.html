@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thangmra Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="logo.png" class="logo">
+
+<h1>Thangmra Club</h1>
+
+</header>
+
+
+<nav>
+
+<a href="#home">হোম</a>
+<a href="#members">সদস্য</a>
+<a href="#gallery">গ্যালারি</a>
+<a href="#notices">নোটিশ</a>
+<a href="#constitution">গঠনতন্ত্র</a>
+
+</nav>
+
+
+<section id="home">
+
+<h2>Thangmra Club-এ স্বাগতম</h2>
+
+<p>
+Thangmra Club-এর অফিসিয়াল ওয়েবসাইট।
+</p>
+
+</section>
+
+
+<section id="members">
+
+<h2>সদস্যবৃন্দ</h2>
+
+<div id="membersList"></div>
+
+</section>
+
+
+<section id="gallery">
+
+<h2>ফটো গ্যালারি</h2>
+
+<div id="galleryList"></div>
+
+</section>
+
+
+<section id="notices">
+
+<h2>নোটিশ</h2>
+
+<div id="noticeList"></div>
+
+</section>
+
+
+<section id="constitution">
+
+<h2>গঠনতন্ত্র</h2>
+
+<p>
+এখানে Thangmra Club-এর গঠনতন্ত্র প্রকাশ করা হবে।
+</p>
+
+</section>
+
+
+<script>
+
+async function loadMembers() {
+
+    const { data, error } =
+        await supabaseClient
+        .from("members")
+        .select("*")
+        .order("id", { ascending: false });
+
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    const box = document.getElementById("membersList");
+
+    box.innerHTML = "";
+
+    data.forEach(member => {
+
+        box.innerHTML += `
+
+        <div class="member">
+
+            ${
+                member.photo_url
+                ? `<img src="${member.photo_url}">`
+                : ""
+            }
+
+            <h3>${member.name}</h3>
+
+            <p>${member.designation || ""}</p>
+
+            <p>${member.phone || ""}</p>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+async function loadGallery() {
+
+    const { data, error } =
+        await supabaseClient
+        .from("gallery")
+        .select("*")
+        .order("id", { ascending: false });
+
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    const box = document.getElementById("galleryList");
+
+    box.innerHTML = "";
+
+    data.forEach(item => {
+
+        box.innerHTML += `
+
+        <div class="gallery-item">
+
+            <img src="${item.image_url}">
+
+            <p>${item.title || ""}</p>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+async function loadNotices() {
+
+    const { data, error } =
+        await supabaseClient
+        .from("notices")
+        .select("*")
+        .order("id", { ascending: false });
+
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    const box = document.getElementById("noticeList");
+
+    box.innerHTML = "";
+
+    data.forEach(notice => {
+
+        box.innerHTML += `
+
+        <div class="notice">
+
+            <h3>${notice.title}</h3>
+
+            <p>${notice.description || ""}</p>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+loadMembers();
+loadGallery();
+loadNotices();
+
+</script>
+
+</body>
+</html>
