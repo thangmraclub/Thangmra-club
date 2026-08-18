@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>Thangmra Club Admin</h1>
+
+<a href="index.html"
+class="admin-btn">
+Website
+</a>
+
+</header>
+
+
+<section class="gallery-section">
+
+<div id="loginBox">
+
+<h2>Admin Login</h2>
+
+<input
+id="email"
+type="email"
+placeholder="Email"
+>
+
+<br><br>
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+>
+
+<br><br>
+
+<button onclick="login()">
+Login
+</button>
+
+<p id="loginMessage"></p>
+
+</div>
+
+
+<div id="adminPanel"
+style="display:none;">
+
+<h2>ছবি আপলোড</h2>
+
+<input
+id="photo"
+type="file"
+accept="image/*"
+>
+
+<br><br>
+
+<input
+id="caption"
+type="text"
+placeholder="ছবির নাম"
+>
+
+<br><br>
+
+<button onclick="uploadImage()">
+ছবি আপলোড করুন
+</button>
+
+<p id="message"></p>
+
+<hr>
+
+<h2>গ্যালারি</h2>
+
+<div id="adminGallery"
+class="gallery">
+</div>
+
+</div>
+
+</section>
+
+
+<script src="config.js"></script>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>
